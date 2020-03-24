@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Page</title>
+    <link rel="stylesheet" href="./assets/styles/main.css">
+    <title>Home Page</title>
 </head>
 <body>
     <ul>
@@ -14,6 +15,14 @@
         <li><a href="/students">Students</a></li>
         <li><a href="/students/api">API</a></li>
     </ul>
- <h1>All about us</h1>   
+ <h1>Students</h1>
+ <% students.map(function(student) { %>
+    <h2><%= student.firstName %>
+    <%= student.lastName %></h2>
+    <p><%= student.age %></p>
+    <p><%= student.country %></p>
+    <p><%= student.skills.join(', ') %></p>
+  <% })%>
+ 
 </body>
 </html>

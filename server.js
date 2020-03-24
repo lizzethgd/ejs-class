@@ -7,6 +7,7 @@ const {showDateTime} = require('./my_modules/my_modules.js')
 
 const app = express()
 
+app.set('view engine', 'ejs')
 //Middle ware
 app.use((req, res, next)=>{
 const user = os.hostname
@@ -63,8 +64,8 @@ let students = [
 ]
 
 app.get('/', (req, res)=>{
-    let pathname = __dirname + '/views/index.html'
-    res.sendFile(pathname)
+    //let pathname = __dirname + '/views/index.html'
+    res.render('index')
 })
 
 app.get('/about', (req, res)=>{
@@ -84,10 +85,21 @@ app.get('/text', (req, res)=>{
 
 app.get('/students', (req, res)=>{
     //let pathname = __dirname + '/views/contact.html'
+    const user = {
+    name : 'Lizzeth',
+    age: 19,
+    country: 'Spain',
+skills: ['HTML','CSS','JavaScript','Python']}
+    //res.render('students', {user})
+    res.render('students', {students})
+})
+
+app.get('/students/api', (req, res)=>{
+    //let pathname = __dirname + '/views/contact.html'
     res.send(students)
 })
 
-app.get('/students/:id', (req, res)=>{
+app.get('/students/api/:id', (req, res)=>{
     //let pathname = __dirname + '/views/contact.html'
     const id=req.params.id
     const student = students.find(
