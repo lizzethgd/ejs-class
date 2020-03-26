@@ -107,7 +107,7 @@ app.get('/student/edit/:id', (req, res)=>{
 })
 
 // GET all students, an API or JSON
-app.get('/api/v1.0.0/students', (req, res)=>{
+app.get('/api/v.1.0/students', (req, res)=>{
     Student.find({},(err, students)=>{
         if(err) return res.status(404).send('Not found')
         res.json(students)
@@ -115,7 +115,7 @@ app.get('/api/v1.0.0/students', (req, res)=>{
 })
 
 // GET a single student, an object
-app.get('/api/v1.0.0/students/:id', (req, res)=>{
+app.get('/api/v.1.0/students/:id', (req, res)=>{
     const id=req.params.id
     Student.findOne({_id:id},(err, student)=>{
         if(err) return res.status(404).send('Not found')
